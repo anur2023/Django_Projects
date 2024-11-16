@@ -1,0 +1,65 @@
+{% comment %} {% extends "base.html" %} {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        br {
+            display: none; /* Hide unnecessary <br> tags */
+        }
+    </style>
+</head>
+<body>
+    {% comment %} {% block content %} {% endcomment %}
+    <center><h1>Employee Database</h1></center>
+    <table style="border:2px">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in all %}
+            <tr>
+                <td>{{ item.fname|title }}</td>
+                <td>{{ item.lname|title }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.age }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% comment %} {% endblock %} {% endcomment %}
+</body>
+</html>
